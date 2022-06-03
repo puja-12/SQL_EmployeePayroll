@@ -10,3 +10,6 @@ UC3: to insert data into table
 insert into employee_payroll values
 ('Pooja',20000,'2022-02-10'),('Rahul',30000,'2022-04-12'),('Vivek',40000,'2019-05-15');
 
+
+UC4: To retrieve all employee_payroll data
+select* from employee_payroll;
