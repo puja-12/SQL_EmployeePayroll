@@ -13,3 +13,11 @@ insert into employee_payroll values
 
 UC4: To retrieve all employee_payroll data
 select* from employee_payroll;
+
+UC5: Ability to retrieve salary data
+
+SELECT Salary FROM employee_payroll
+WHERE name = 'Pooja
+
+SELECT* FROM employee_payroll
+Where Start_date BETWEEN CAST('2022-01-01' AS DATE) AND GETDATE();
