@@ -51,3 +51,18 @@ alter table employee_payroll add address varchar(200) not null default 'ABC',dep
 update employee_payroll set Phone='9897654321',department='HR' where Name ='Pooja';
 update employee_payroll set Phone='8967452310',department='Engeneering' where name='Rahul';
 update employee_payroll set Phone='9000876543',department='Finance' where name='Vivek';
+
+UC9:Extend employee_payroll to have Basic Pay, Deductions, Taxable Pay, Income Tax, Net Pay
+
+alter table employee_payroll add BasicPay decimal,Deduction decimal, TaxablePay decimal ,IncomeTax decimal,NetPay decimal;
+update employee_payroll set BasicPay=Salary;
+update employee_payroll set Deduction=500 where department = 'Engeneering';
+update employee_payroll set Deduction=1000 where department = 'HR';
+update employee_payroll set Deduction=2000 where department = 'Finance';
+
+update employee_payroll set IncomeTax=400;
+update employee_payroll set TaxablePay=700;
+
+update employee_payroll set NetPay = (BasicPay-Deduction);
+SELECT* from employee_payroll
+alter table employee_payroll drop column Salary;
