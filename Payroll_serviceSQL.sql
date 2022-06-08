@@ -43,3 +43,11 @@ WHERE GENDER = 'M' GROUP BY GENDER;
 SELECT GENDER, MIN(salary) FROM employee_payroll GROUP BY GENDER;
 
 SELECT GENDER, COUNT(salary) FROM employee_payroll GROUP BY GENDER;
+
+UC8:Ability to extend table by adding columns
+
+Alter table employee_payroll add Phone varchar(12); 
+alter table employee_payroll add address varchar(200) not null default 'ABC',department varchar(50);
+update employee_payroll set Phone='9897654321',department='HR' where Name ='Pooja';
+update employee_payroll set Phone='8967452310',department='Engeneering' where name='Rahul';
+update employee_payroll set Phone='9000876543',department='Finance' where name='Vivek';
