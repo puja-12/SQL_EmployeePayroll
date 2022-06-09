@@ -66,3 +66,11 @@ update employee_payroll set TaxablePay=700;
 update employee_payroll set NetPay = (BasicPay-Deduction);
 SELECT* from employee_payroll
 alter table employee_payroll drop column Salary;
+
+
+UC10:Adding Terisa in sales and marketing department
+
+insert into employee_payroll values
+('Terisa','2019-06-18','F','8796053421','ABC','Sales',35000,3800,700,400,31200);
+insert into employee_payroll values
+('Terisa','2019-06-18','F','8796053421','ABC','Marketing',45000,3000,700,400,42000);
