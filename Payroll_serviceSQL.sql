@@ -85,7 +85,8 @@ SELECT* from Company
 create table employee
 (empId int PRIMARY KEY,Name varchar(20),compId INT REFERENCES Company(compId) ,Phone varchar(20),Address varchar(200),Gender char);
 select* from employee
-
+alter table employee add Start_date DATE;
+update employee set Start_Date='2022-08-28' where empId = 4;
 
 create Table payroll
 (empId INT REFERENCES employee(empId), BasicPay decimal,Deduction decimal, TaxablePay decimal ,IncomeTax decimal,NetPay decimal);
@@ -97,5 +98,40 @@ DeptName VARCHAR(10),
 empId INT REFERENCES employee(empId),
 deptId int PRIMARY KEY);
 select* from DEPARTMENT;
+
+
+INSERT INTO Company VALUES(01, 'Hitachi' );
+INSERT INTO Company VALUES(02,'TCS');
+INSERT INTO Company VALUES(03,'wipro');
+INSERT INTO Company VALUES(04,'Amazon');
+
+INSERT INTO DEPARTMENT VALUES ( 'sales', 1,001);
+INSERT INTO DEPARTMENT VALUES ( 'HR',2,002);
+INSERT INTO DEPARTMENT VALUES ('Finance',3,003);
+INSERT INTO DEPARTMENT VALUES ('Marketing', 4,004);
+
+INSERT INTO employee VALUES (1, 'Terisa',02,'9897654321','America', 'F');
+INSERT INTO employee VALUES (2, 'Jeck',01,'6785940321','London','M');
+INSERT INTO employee VALUES (3, 'John',03,'8796053412','India','M' );
+INSERT INTO employee VALUES (4, 'Terisa',02,'9897657857','SriLanka', 'F');
+
+INSERT INTO payroll VALUES(1, 20000,1000,400,700,19000);
+INSERT INTO payroll VALUES(2,30000,1200,400,700,28800);
+INSERT INTO payroll VALUES(3,40000,2000,400,700,38000);
+INSERT INTO payroll VALUES(4,35000,1000,400,700,34000);
+
+UC12:  retrieve queries done especially in UC 4, UC 5 and UC 7 are working with new table structure
+
+.............UC4: To retrieve all  data...........
+SELECT  e.Name, d.DeptName, c.compName, p.BasicPay,p.NetPay,e.Gender,e.Address,e.Phone
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId;
+
+
 
 
