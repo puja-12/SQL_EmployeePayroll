@@ -74,3 +74,28 @@ insert into employee_payroll values
 ('Terisa','2019-06-18','F','8796053421','ABC','Sales',35000,3800,700,400,31200);
 insert into employee_payroll values
 ('Terisa','2019-06-18','F','8796053421','ABC','Marketing',45000,3000,700,400,42000);
+
+
+.........Create entities and relationships........
+
+create table Company
+(compId INT PRIMARY KEY, compName varchar(20));
+SELECT* from Company
+
+create table employee
+(empId int PRIMARY KEY,Name varchar(20),compId INT REFERENCES Company(compId) ,Phone varchar(20),Address varchar(200),Gender char);
+select* from employee
+
+
+create Table payroll
+(empId INT REFERENCES employee(empId), BasicPay decimal,Deduction decimal, TaxablePay decimal ,IncomeTax decimal,NetPay decimal);
+select* from payroll
+
+
+CREATE TABLE DEPARTMENT(
+DeptName VARCHAR(10),
+empId INT REFERENCES employee(empId),
+deptId int PRIMARY KEY);
+select* from DEPARTMENT;
+
+
