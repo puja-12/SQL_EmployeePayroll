@@ -88,6 +88,7 @@ select* from employee
 alter table employee add Start_date DATE;
 update employee set Start_Date='2022-08-28' where empId = 4;
 
+
 create Table payroll
 (empId INT REFERENCES employee(empId), BasicPay decimal,Deduction decimal, TaxablePay decimal ,IncomeTax decimal,NetPay decimal);
 select* from payroll
@@ -132,6 +133,76 @@ ON c.compId=e.compId
 INNER JOIN payroll p
 ON p.empId=e.empId;
 
+................UC5: Ability to retrieve salary data by name..............
 
+SELECT  e.Name,p.BasicPay
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+where Name='jeck';
+.................employees join between this range of date............
+SELECT  e.Name,e.Start_Date
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE start_Date BETWEEN CAST('2018-01-01'AS DATE) AND GETDATE();
 
+............UC7:Ability to find sum,average,min,max & count...........
 
+SELECT sum(BasicPay)as p
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE Gender= 'F' GROUP BY Gender;
+
+SELECT Max(BasicPay)as p
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE Gender= 'M' GROUP BY Gender;
+
+SELECT Avg(BasicPay)as p
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE Gender= 'F' GROUP BY Gender;
+
+SELECT Min(BasicPay)as p
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE Gender= 'F' GROUP BY Gender;
+
+SELECT Count(BasicPay)as p
+FROM employee e
+INNER JOIN DEPARTMENT d
+ON e.empId=d.empId
+INNER JOIN Company c
+ON c.compId=e.compId
+INNER JOIN payroll p
+ON p.empId=e.empId
+WHERE Gender= 'M' GROUP BY Gender;
